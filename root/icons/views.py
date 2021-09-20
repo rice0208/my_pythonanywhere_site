@@ -15,4 +15,5 @@ def get_icon(string: str):
     wrapper = FileWrapper(img_io)
     return send_file(wrapper,
                      mimetype='image/png', as_attachment=True, attachment_filename=string+'.png',
+                     direct_passthrough=True,
                     )
