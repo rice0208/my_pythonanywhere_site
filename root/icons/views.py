@@ -7,9 +7,10 @@ bp = Blueprint('icons', 'icons', url_prefix='/icons')
 
 @bp.route('/v1/<string>')
 def get_icon(string: str):
-    img_io = BytesIO()
     image = generate_icon(int(string.encode('utf-8').hex()))
+    img_io = BytesIO()
     image.save(img_io, 'PNG')
     img_io.seek(0)
     return send_file(img_io,
-                     mimetype='image/png', as_attachment=True, attachment_filename=string+'.png')
+                     mimetype='image/png', as_attachment=True, attachment_filename=string+'.png',
+                    )
