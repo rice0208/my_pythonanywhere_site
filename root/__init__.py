@@ -8,3 +8,5 @@ def create_app() -> Flask:
 def register_blueprints(app: Flask) -> None:
     from . import icons
     app.register_blueprint(icons.bp)
+
+app = create_app()
