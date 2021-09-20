@@ -11,4 +11,5 @@ def get_icon(string: str):
     image = generate_icon(int(string.encode('utf-8').hex()))
     image.save(img_io, 'PNG')
     img_io.seek(0)
-    return send_file(img_io, mimetype='image/png')
+    return send_file(img_io,
+                     mimetype='image/png', as_attachment=True, attachment_filename=string+'.png')
