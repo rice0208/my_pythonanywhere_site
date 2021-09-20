@@ -1,5 +1,6 @@
 from flask import Blueprint
 from flask.helpers import send_file
+from werkzeug import FileWrapper
 from .icons_v1 import generate_icon
 from io import BytesIO
 
@@ -11,6 +12,7 @@ def get_icon(string: str):
     img_io = BytesIO()
     image.save(img_io, 'PNG')
     img_io.seek(0)
-    return send_file(img_io,
+    wrapper = FileWrapper(img_io)
+    return send_file(wrapper,
                      mimetype='image/png', as_attachment=True, attachment_filename=string+'.png',
                     )
