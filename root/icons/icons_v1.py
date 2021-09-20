@@ -9,9 +9,13 @@ def generate_icon(number: int):
     else:
         h = (h[2:] * 64)[:64]
         b = (0, int(h[0]))
-    color = [int(h[1:6], 2,) + 84, int(h[7:12], 2,) + 84,] + [int(h[13:18], 2,) + 160]
-    tmp = [sum([int(i) for i in h[0:2]]), sum([int(i) for i in h[2:4]]), sum([int(i) for i in h[4:6]])]
-    color = [color[i] for i in tmp[:3]]
+    color = [int(h[1:6], 2,) + 84, int(h[7:12], 2,) + 84, int(h[13:18], 2,) + 84]
+    if h[1:4] == '000': color[0] += 76
+    elif h[1:4] == '001' or h[1:4] == '110': color[1] += 76
+    elif h[1:4] == '010' or h[1:4] == '111': color[2] += 76
+    elif h[1:4] == '011': color[0] += 76; color[1] += 76
+    elif h[1:4] == '100': color[0] += 76; color[2] += 76
+    elif h[1:4] == '101': color[1] += 76; color[2] += 76
     if b == (0, 0,):
         image = Image.new('RGB', (1000, 1000), tuple(color))
         color = [i + 75 for i in color]
