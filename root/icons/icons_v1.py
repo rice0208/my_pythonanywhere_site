@@ -17,14 +17,14 @@ def generate_icon(number: int):
     elif h[1:4] == '100': color[0] += 76; color[2] += 76
     elif h[1:4] == '101': color[1] += 76; color[2] += 76
     if b == (0, 0,):
-        image = Image.new('RGB', (1100, 1100), tuple(color))
+        image = Image.new('RGB', (1200, 1200), tuple(color))
         color = [i + 75 for i in color]
     elif b == (0, 1,):
-        image = Image.new('RGB', (1100, 1100), tuple([i + 144 for i in color]))
+        image = Image.new('RGB', (1200, 1200), tuple([i + 144 for i in color]))
     elif b == (1, 0,):
-        image = Image.new('RGB', (1100, 1100), (255, 255, 255))
+        image = Image.new('RGB', (1200, 1200), (255, 255, 255))
     else:
-        image = Image.new('RGB', (1100, 1100), tuple(color))
+        image = Image.new('RGB', (1200, 1200), tuple(color))
         color = [255, 255, 255]
     color = tuple(color)
     c = h[25: 31] if b[0] == 0 else h[25: 35]
@@ -37,7 +37,7 @@ def generate_icon(number: int):
         ]:
             for j in range(6):
                 if c[j] == '0':
-                    image.paste(color, tuple([200 * p + 50 for p in i[j]] + [200 * p + 250 for p in i[j]]))
+                    image.paste(color, tuple([200 * p + 100 for p in i[j]] + [200 * p + 300 for p in i[j]]))
         if h[31]:
             image.paste(color, (400, 400, 200, 200))
     else:
@@ -52,11 +52,11 @@ def generate_icon(number: int):
         ]:
             for j in range(10):
                 if c[j] == '0':
-                    image.paste(color, tuple([200 * p + 50 for p in i[j]] + [200 * p + 250 for p in i[j]]))
+                    image.paste(color, tuple([200 * p + 100 for p in i[j]] + [200 * p + 300 for p in i[j]]))
         for i in [[
             (2, 0), (2, 1), (2, 2), (2, 3), (2, 4)
         ]]:
             for j in range(5):
                 if h[35: 40][j] == '0':
-                    image.paste(color, tuple([200 * p + 50 for p in i[j]] + [200 * p + 250 for p in i[j]]))
+                    image.paste(color, tuple([200 * p + 100 for p in i[j]] + [200 * p + 300 for p in i[j]]))
     return image
