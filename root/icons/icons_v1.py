@@ -7,7 +7,7 @@ def rectangle(image: Image, color: tuple, offset: tuple,):
 def generate_icon_v1(number: int):
     h = bin(number)
     h = (h[2:] * 64)[:64]
-    if h[0] == "0":
+    if h[32] == "1":
         b = (1, int(h[0]))
     else:
         b = (0, int(h[0]))
