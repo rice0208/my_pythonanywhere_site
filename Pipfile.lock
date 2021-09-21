@@ -1,16 +1,16 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6280b96dd39c014231c1f7dcba2ec385d71c51c63f85f246ca0a79e7baa7d9af"
+            "sha256": "720efd3b4cd75aabea9a3e69f0fe6cdd9ff3e1ebdfaac58c74c79c8b456995f9"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.8"
+            "python_version": "3"
         },
         "sources": [
             {
                 "name": "pypi",
-                "url": "https://pypi.org/simple",
+                "url": "https://mirrors.aliyun.com/pypi/simple",
                 "verify_ssl": true
             }
         ]
@@ -23,14 +23,6 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==8.0.1"
-        },
-        "colorama": {
-            "hashes": [
-                "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b",
-                "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"
-            ],
-            "markers": "platform_system == 'Windows'",
-            "version": "==0.4.4"
         },
         "flask": {
             "hashes": [
