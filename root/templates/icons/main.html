@@ -20,31 +20,37 @@
     </form>
     <div class="blank"></div>
     {% if has_image %}
-    <h3 style="text-align: center;">Your icon:<br><br><img src="{{ url }}" style="text-align: center;" width=400 height=400></h3>
-    
-    <div class="blank"></div>
-    <table class="table table-hover">
-        <tbody>
-            <tr>
-                <th>Your String</th>
-                <td>{{ string }}</td>
-            </tr>
-            <tr>
-                <th>Image URL</th>
-                <td>{{ url }}</td>
-            </tr>
-            <tr>
-                <th>HTML</th>
-                <td><code>&lt;img src="{{ url }}"&gt;</code></td>
-            </tr>
-            <tr>
-                <th>Markdown</th>
-                <td><code>![{{ string }}]({{ url }} "{{ string }}")</code></td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="blank"></div>
-    <div class="blank"></div>
+        {% if "/" not in string %}
+        <h3 style="text-align: center;">Your icon:<br><br><img src="{{ url }}" style="text-align: center;" width=400 height=400></h3>
+        
+        <div class="blank"></div>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>Your String</th>
+                    <td>{{ string }}</td>
+                </tr>
+                <tr>
+                    <th>Image URL</th>
+                    <td>{{ url }}</td>
+                </tr>
+                <tr>
+                    <th>HTML</th>
+                    <td><code>&lt;img src="{{ url }}"&gt;</code></td>
+                </tr>
+                <tr>
+                    <th>Markdown</th>
+                    <td><code>![{{ string }}]({{ url }} "{{ string }}")</code></td>
+                </tr>
+            </tbody>
+        </table>
+        {% else %}
+        <p style="text-align: center;"><h3>Oops!</h3><br>
+            It seems that you cannot add character <code>/</code> into your string!
+        </p>
+        {% endif %}
+        <div class="blank"></div>
+        <div class="blank"></div>
     {% endif %}
 </div>
 {% endblock %}
