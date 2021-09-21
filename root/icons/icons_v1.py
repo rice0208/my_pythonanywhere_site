@@ -6,14 +6,10 @@ def rectangle(image: Image, color: tuple, offset: tuple,):
 
 def generate_icon_v1(number: int):
     h = bin(number)
-    if h.startswith("-"):
-        h = (h[3:] * 64)[:64]
-        b = (
-            1,
-            int(h[0]),
-        )
+    h = (h[2:] * 64)[:64]
+    if h[0] == "0":
+        b = (1, int(h[0]))
     else:
-        h = (h[2:] * 64)[:64]
         b = (0, int(h[0]))
     color = [
         int(
