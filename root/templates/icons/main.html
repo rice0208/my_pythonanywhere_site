@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Icons{% endblock %}
+
+{% block content %}
+<div class="container col-8 offset-2">
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <h1>Custom <span class="text-success">Icon</span> Generator</h1>
+    <p>This tool provides various GitHub-styled identicons just in this site. 
+        You can try it out and get your own identicon with your name!</p>
+    <div class="blank"></div>
+    <form method="post">
+        <div class="input-group">
+            <input name="string" id="string" class="form-control input-group-item" placeholder="enter something..." value="{{ string }}">
+            <input type="submit" class="btn btn-success input-group-item"
+                onclick="gen_icon()" value="Get your icon!"
+            >
+        </div>
+    </form>
+    <div class="blank"></div>
+    {% if has_image %}
+    <h3 style="text-align: center;">Your icon:<br><br><img src="{{ url }}" style="text-align: center;" width=400 height=400></h3>
+    
+    <div class="blank"></div>
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>Your String</th>
+                <td>{{ string }}</td>
+            </tr>
+            <tr>
+                <th>Image URL</th>
+                <td>{{ url }}</td>
+            </tr>
+            <tr>
+                <th>HTML</th>
+                <td><code>&lt;img src="{{ url }}"&gt;</code></td>
+            </tr>
+            <tr>
+                <th>Markdown</th>
+                <td><code>![{{ string }}]({{ url }} "{{ string }}")</code></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,10 +1,24 @@
-from flask import Blueprint, Response
+from flask import Blueprint, Response, render_template, request
 from werkzeug.wsgi import FileWrapper
 from .icons_v1 import generate_icon_v1
 from io import BytesIO
 
 bp = Blueprint("icons", "icons", url_prefix="/icons")
 
+@bp.route("/", methods=("GET", "POST"))
+def get_index():
+    if request.method == 'POST':
+        string = request.form['string']
+        if string == "":
+            return render_template('icons/main.html', url="", has_image=False, string="")
+        image_url = "https://rice0208.pythonanywhere.com/icons/v1/" + string
+        return render_template(
+            "icons/main.html",
+            url = image_url,
+            has_image = True,
+            string = string,
+        )
+    return render_template('icons/main.html', url="", has_image=False, string="")
 
 @bp.route("/v1/<string>")
 def get_icon(string: str):
