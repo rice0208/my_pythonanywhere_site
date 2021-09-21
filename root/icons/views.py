@@ -21,7 +21,7 @@ def get_index():
         )
     return render_template('icons/main.html', url="", has_image=False, string="")
 
-@bp.route("/v1/<string>")
+@bp.route("/v1/<string>.png")
 def get_icon(string: str):
     image = generate_icon_v1(
         int(str(int(string.encode("utf-8").hex(), 16) ** 50)[-50:]) ** 3
