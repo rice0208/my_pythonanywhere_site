@@ -2,6 +2,7 @@ from flask import Blueprint, Response, render_template, request
 from werkzeug.wsgi import FileWrapper
 from .icons_v1 import generate_icon_v1
 from io import BytesIO
+from urllib.parse import quote
 
 bp = Blueprint("icons", "icons", url_prefix="/icons")
 
@@ -11,7 +12,7 @@ def get_index():
         string = request.form['string']
         if string == "":
             return render_template('icons/main.html', url="", has_image=False, string="")
-        image_url = "https://rice0208.pythonanywhere.com/icons/v1/" + string
+        image_url = "https://rice0208.pythonanywhere.com/icons/v1/" + quote(string)
         return render_template(
             "icons/main.html",
             url = image_url,
