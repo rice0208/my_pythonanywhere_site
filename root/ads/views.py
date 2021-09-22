@@ -17,6 +17,7 @@ def ads_silicon():
     return redirect(
         choice([
             "https://i.loli.net/2021/09/22/UqJGVtZFNls7Ibj.png",
-            "https://i.loli.net/2021/09/22/3lOBazuvWCDk15e.png"
+            "https://i.loli.net/2021/09/22/3lOBazuvWCDk15e.png",
+            "https://i.loli.net/2021/09/23/O6mBMa5DvSALQNg.png",
         ])
     )
