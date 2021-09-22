@@ -13,6 +13,7 @@ def create_app() -> Flask:
 
 
 def register_blueprints(app: Flask) -> None:
-    from . import icons
+    from . import icons, ads
 
     app.register_blueprint(icons.bp)
+    app.register_blueprint(ads.bp)
