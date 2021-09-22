@@ -16,4 +16,5 @@ def register_blueprints(app: Flask) -> None:
     from . import icons, ads
 
     app.register_blueprint(icons.bp)
-    app.register_blueprint(ads.bp)
+    app.register_blueprint(ads.bp) # deprecated
+    app.register_blueprint(icons.bp_silicon)
