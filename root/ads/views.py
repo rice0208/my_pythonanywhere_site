@@ -10,7 +10,7 @@ def ads_index():
 @bp.route('/icons')
 def ads_icons():
     # deprecated
-    return redirect("ads.ads_silicon")
+    return redirect(url_for("ads.ads_silicon"))
 
 @bp.route('/silicon')
 def ads_silicon():
