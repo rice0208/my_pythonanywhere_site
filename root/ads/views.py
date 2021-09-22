@@ -8,4 +8,4 @@ def ads_index():
 
 @bp.route('/icons')
 def ads_icons():
-    return redirect("https://sm.ms/image/UqJGVtZFNls7Ibj")
+    return redirect("https://i.loli.net/2021/09/22/UqJGVtZFNls7Ibj.png")
