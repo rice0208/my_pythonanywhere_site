@@ -3,54 +3,142 @@
 {% block title %}Icons{% endblock %}
 
 {% block content %}
-<div class="container col-8 offset-2">
+<div class="container col-lg-8 offset-lg-2 row">
     <div class="blank"></div>
     <div class="blank"></div>
     <h1><span class="text-success">Silicon</span>: Custom <span class="text-success">Icon</span> Generator</h1>
-    <p>This tool provides various GitHub-styled identicons just in this site. 
-        You can try it out and get your own identicon with your name!</p>
-    <div class="blank"></div>
-    <form method="post">
-        <div class="input-group">
-            <input name="string" id="string" class="form-control input-group-item" placeholder="enter something..." value="{{ string }}">
-            <input type="submit" class="btn btn-success input-group-item"
-                onclick="gen_icon()" value="Get your icon!"
-            >
-        </div>
-    </form>
-    <div class="blank"></div>
-    {% if has_image %}
-        {% if "/" not in string %}
-        <h3 style="text-align: center;">Your icon:<br><br><img src="{{ url }}" style="text-align: center;" width=400 height=400></h3>
-        <a class="d-block btn btn-outline-primary btn-lg" href="{{ url }}" download="{{ string }}.png">Download this icon</a>
-        <div class="blank"></div>
-        <table class="table table-hover">
-            <tbody>
-                <tr>
-                    <th>Your String</th>
-                    <td>{{ string }}</td>
-                </tr>
-                <tr>
-                    <th>Image URL</th>
-                    <td>{{ url }}</td>
-                </tr>
-                <tr>
-                    <th>HTML</th>
-                    <td><code>&lt;img src="{{ url }}"&gt;</code></td>
-                </tr>
-                <tr>
-                    <th>Markdown</th>
-                    <td><code>![{{ string }}]({{ url }} "{{ string }}")</code></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="small-blank"></div>
+    <div class="col-lg-5">
+        <p>This tool provides various GitHub-styled identicons just in this site. 
+            You can try it out and get your own identicon with your name!</p>
+        <div class="small-blank"></div>
+        <form method="post">
+            <div class="input-group">
+                <input name="string" id="string" class="form-control input-group-item" placeholder="enter something..." value="{{ string }}">
+                <input type="submit" class="btn btn-success input-group-item"
+                    onclick="gen_icon()" value="Get your icon!"
+                >
+            </div>
+        </form>
+        <div class="small-blank"></div>
+        {% if has_image %}
+            {% if "/" not in string %}
+            <h3 style="text-align: center;">Your icon:<br><br><img src="{{ url }}" style="text-align: center; width: 80%; height: auto;"></h3>
+            <a class="d-block btn btn-outline-primary btn-lg" href="{{ url }}" download="{{ string }}.png">Download this icon</a>
+            <div class="blank"></div>
+            <table class="table table-hover col-lg-5">
+                <tbody>
+                    <tr>
+                        <th>Your String</th>
+                        <td style="
+                            word-break: break-all;
+                        ">{{ string }}</td>
+                    </tr>
+                    <tr>
+                        <th>Image URL</th>
+                        <td style="
+                            word-break: break-all;
+                        ">{{ url }}</td>
+                    </tr>
+                    <tr>
+                        <th>HTML</th>
+                        <td style="
+                            word-break: break-all;
+                        "><code>&lt;img src="{{ url }}"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <th>Markdown</th>
+                        <td style="
+                            word-break: break-all;
+                        "><code>![{{ string }}]({{ url }} "{{ string }}")</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            {% else %}
+            <p style="text-align: center;"><h3>Oops!</h3><br>
+                It seems that you cannot add character <code>/</code> into your string!
+            </p>
+            {% endif %}
         {% else %}
-        <p style="text-align: center;"><h3>Oops!</h3><br>
-            It seems that you cannot add character <code>/</code> into your string!
-        </p>
+            <p class="text-muted">
+                You haven't entered anything yet!
+            </p>
         {% endif %}
         <div class="blank"></div>
-        <div class="blank"></div>
-    {% endif %}
+    </div>
+    <div class="col-lg-7">
+        <div class="accordion" id="releases">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="1-0-1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1-0-1" aria-expanded="true" aria-controls="collapse-1-0-1">
+                        Hello <span class="text-success">&nbsp;<b>Silicon</b></span>&nbsp;(#2 v1.0.1)
+                    </button>
+                </h2>
+                <div id="collapse-1-0-1" class="accordion-collapse collapse show" aria-labelledby="1-0-1" data-bs-parent="#releases">
+                    <div class="accordion-body">
+                        <p>
+                            <h3>Release #2 (v1.0.1)</h3><br>
+                            <h4><b>Hello Silicon</b></h4>
+                            I decided to name this project Silicon. Just like Fluorine, this name is also chose from the periodic table. As you can see, the word 'silicon' has 'icon'.<br><br>
+                            <h4><b>Release Notes:</b></h4>
+                            <b>Fixed bugs with:</b>
+                            <ul>
+                                <li>
+                                    fix bug that the icons look the same when the strings share a 4-char prefix. (Issue #1)
+                                </li>
+                                <li>
+                                    fix bug that this site return no image (actually <code>404</code>) when argument <code>string</code> has character <code>/</code>
+                                </li>
+                            </ul>
+                            <b>Changes</b>
+                            <ul>
+                                <li>
+                                    Advertisement supports at <code>/ads/icons</code>.
+                                </li>
+                                <li>
+                                    Add different background color to icons.
+                                </li>
+                            </ul>
+                            <b>Deprecation Warnings</b>
+                            <ul>
+                                <li>
+                                    Route <code>/icons</code> is deprecated, and will soon no longer work. The route in place of it is <code>/silicon</code>
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="1-0-0">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1-0-0" aria-expanded="false" aria-controls="collapse-1-0-0">
+                        Release #1 (v1.0.0)
+                    </button>
+                </h2>
+                <div id="collapse-1-0-0" class="accordion-collapse collapse" aria-labelledby="1-0-0" data-bs-parent="#releases">
+                    <div class="accordion-body">
+                        <p>
+                            <h3>Release #1 (v1.0.0)</h3>
+                            Say hello to my new icon generator! This is the first release of this project.<br>
+                            <b>How to use this project:</b><br>
+                            <ul>
+                                <li>
+                                    <code>/icon</code>: front page
+                                </li>
+                                <li>
+                                    <code>/icon/v1/&lt;string&gt;</code>: use argument <code>string</code> to generate an icon (PNG)
+                                </li>
+                            </ul>
+                            And also this will be the first project on this site. I created a repository on GitHub for this site:
+                            <a href="https://github.com/rice0208/my_pythonanywhere_site" class="link-success">rice0208/my_pythonanywhere_site</a><br><br>
+                            <b>Star of watch my repo if you want to keep track of this project.</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blank"></div>
+    <div class="blank"></div>
 </div>
 {% endblock %}
