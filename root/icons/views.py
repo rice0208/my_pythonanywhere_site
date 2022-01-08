@@ -5,43 +5,42 @@ from io import BytesIO
 from urllib.parse import quote
 from random import randint
 
-bp = Blueprint("icons", "icons", url_prefix="/icons") # this bp is deprecated
+bp = Blueprint("icons", "icons", url_prefix="/icons")  # this bp is deprecated
 bp_silicon = Blueprint("silicon", "silicon", url_prefix="/silicon")
+
 
 @bp.route("/")
 def get_index():
     return redirect(url_for("silicon.get_silicon_index"))
 
+
 @bp_silicon.route("/", methods=("GET", "POST"))
 def get_silicon_index():
-    if request.method == 'POST':
-        string = request.form['string']
+    if request.method == "POST":
+        string = request.form["string"]
         if string == "":
-            return render_template('icons/main.html', url="", has_image=False, string="")
+            return render_template(
+                "icons/main.html", url="", has_image=False, string=""
+            )
         image_url = "https://rice0208.pythonanywhere.com/silicon/v1/" + quote(string)
         return render_template(
             "icons/main.html",
-            url = image_url,
-            has_image = True,
-            string = string,
+            url=image_url,
+            has_image=True,
+            string=string,
         )
-    return render_template('icons/main.html', url="", has_image=False, string="")
+    return render_template("icons/main.html", url="", has_image=False, string="")
+
 
 @bp.route("/v1/<string>")
 def get_icon(string: str):
-    return redirect(
-        url_for(
-            "silicon.get_silicon_icon",
-            string = string
-        )
-    )
+    return redirect(url_for("silicon.get_silicon_icon", string=string))
+
 
 @bp_silicon.route("/v1/<string>")
 def get_silicon_icon(string: str):
     if string == "random" or string == "silicon":
-        image = generate_icon_v1(
-            randint(1, 67108864)
-        )
+        image = generate_icon_v1(randint(1, 67108864))
     else:
         image = generate_icon_v1(
             int(str(int(string.encode("utf-8").hex(), 16) ** 50)[-50:]) ** 3

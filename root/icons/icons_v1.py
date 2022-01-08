@@ -1,8 +1,14 @@
 from PIL import Image
 from random import shuffle
 
-def rectangle(image: Image, color: tuple, offset: tuple,):
+
+def rectangle(
+    image: Image,
+    color: tuple,
+    offset: tuple,
+):
     image.paste(color, offset)
+
 
 def generate_icon_v1(number: int):
     h = bin(number)
@@ -72,8 +78,15 @@ def generate_icon_v1(number: int):
             [(4, 4), (4, 3), (4, 2), (3, 4), (3, 3), (3, 2)],
         ]:
             for j in range(6):
-                if c[j] == '0':
-                    rectangle(image, color, tuple([200 * p + 100 for p in i[j]] + [200 * p + 300 for p in i[j]]))
+                if c[j] == "0":
+                    rectangle(
+                        image,
+                        color,
+                        tuple(
+                            [200 * p + 100 for p in i[j]]
+                            + [200 * p + 300 for p in i[j]]
+                        ),
+                    )
         if h[31]:
             image.paste(color, (400, 400, 200, 200))
     else:
