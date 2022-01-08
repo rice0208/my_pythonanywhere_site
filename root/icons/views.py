@@ -3,6 +3,7 @@ from werkzeug.wsgi import FileWrapper
 from .icons_v1 import generate_icon_v1
 from io import BytesIO
 from urllib.parse import quote
+from random import randint
 
 bp = Blueprint("icons", "icons", url_prefix="/icons") # this bp is deprecated
 bp_silicon = Blueprint("silicon", "silicon", url_prefix="/silicon")
@@ -37,9 +38,14 @@ def get_icon(string: str):
 
 @bp_silicon.route("/v1/<string>")
 def get_silicon_icon(string: str):
-    image = generate_icon_v1(
-        int(str(int(string.encode("utf-8").hex(), 16) ** 50)[-50:]) ** 3
-    )
+    if string == "random" or string == "silicon":
+        image = generate_icon_v1(
+            randint(1, 67108864)
+        )
+    else:
+        image = generate_icon_v1(
+            int(str(int(string.encode("utf-8").hex(), 16) ** 50)[-50:]) ** 3
+        )
     img_io = BytesIO()
     image.save(img_io, "PNG")
     img_io.seek(0)
